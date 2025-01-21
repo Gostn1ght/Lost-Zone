@@ -77,7 +77,7 @@ void CDetailManager::hw_Load_Geom()
 			const CDetail& D = *objects[o];
 			for (u32 batch = 0; batch < hw_BatchSize; batch++)
 			{
-				u32 mid = batch * c_size;
+				u32 mid = batch;
 				for (u32 v = 0; v < D.number_vertices; v++)
 				{
 					const Fvector& vP = D.vertices[v].P;
@@ -99,22 +99,22 @@ void CDetailManager::hw_Load_Geom()
 
 	// Fill IB
 	{
-		u16* pI;
-		u16* pIOriginal;
-		pIOriginal = xr_alloc<u16>(dwIndices);
+		u32* pI;
+		u32* pIOriginal;
+		pIOriginal = xr_alloc<u32>(dwIndices);
 		pI = pIOriginal;
 		for (o = 0; o < objects.size(); o++)
 		{
 			const CDetail& D = *objects[o];
-			u16 offset = 0;
+			u32 offset = 0;
 			for (u32 batch = 0; batch < hw_BatchSize; batch++)
 			{
 				for (u32 i = 0; i < u32(D.number_indices); i++)
-					*pI++ = u16(u16(D.indices[i]) + u16(offset));
-				offset = u16(offset + u16(D.number_vertices));
+					*pI++ = u32(u32(D.indices[i]) + u32(offset));
+				offset = u32(offset + u32(D.number_vertices));
 			}
 		}
-		R_CHK(dx10BufferUtils::CreateIndexBuffer(&hw_IB, pIOriginal, dwIndices * 2));
+		R_CHK(dx10BufferUtils::CreateIndexBuffer(&hw_IB, pIOriginal, dwIndices * sizeof(u32)));
 		HW.stats_manager.increment_stats_ib(hw_IB);
 		xr_free(pIOriginal);
 	}

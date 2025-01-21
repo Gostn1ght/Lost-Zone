@@ -332,6 +332,8 @@ int opt_dynamic = 0;
 //SFZ Lens Flares
 int ps_r2_lfx = 0;
 
+int BatchSize = 64;
+
 //Static on dx11
 Flags32	ps_r2_static_flags = {
 	R2FLAG_USE_BUMP
@@ -809,8 +811,30 @@ public:
 
 extern int DetailScale = true;
 
+
+class CCC_ReloadDetailManager : public IConsole_Command
+{
+public:
+	CCC_ReloadDetailManager(LPCSTR N) : IConsole_Command(N) { bEmptyArgsHandled = FALSE; };
+	virtual void Execute(LPCSTR args)
+	{
+		if (RImplementation.Details)
+		{
+			int i = atoi(args);
+
+			BatchSize = i;
+
+			RImplementation.Details->hw_Unload();
+			RImplementation.Details->hw_Load();
+		}
+	}
+};
+
 void		xrRender_initconsole	()
 {
+	CMD1(CCC_ReloadDetailManager, "r__detail_batch_size");
+
+
 	CMD3(CCC_Preset,	"_preset",				&ps_Preset,	qpreset_token	);
 
 	CMD4(CCC_Integer, "r_detail_scale", &DetailScale, 0, 1);

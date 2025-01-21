@@ -224,6 +224,7 @@ bool CProgressSaver::LoadPlayerInventory(IReader* reader, game_PlayerState* ps)
 
 bool CProgressSaver::LoadPlayerDialogs(IReader* reader, game_PlayerState* ps)
 {
+#ifdef INFO_PORTIONS_SAVING
 	if (reader->open_chunk(INFO_PORTIONS_CHUNK))
 	{
 		u32 size = reader->r_u32();
@@ -241,6 +242,7 @@ bool CProgressSaver::LoadPlayerDialogs(IReader* reader, game_PlayerState* ps)
 		P.w_u8(true);
 		Level().Server->game->u_EventSend(P);
 	}
+#endif 
 	return true;
 }
 

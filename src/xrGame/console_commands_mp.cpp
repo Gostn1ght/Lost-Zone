@@ -142,6 +142,8 @@ extern BOOL		af_sv_ofmode = TRUE;
 extern BOOL		af_sv_collect_statistic = FALSE;
 extern BOOL		af_debug_loggining = FALSE;
 
+extern BOOL		g_enable_hud_compas = FALSE;
+
 class CCC_Restart : public IConsole_Command {
 public:
 					CCC_Restart		(LPCSTR N) : IConsole_Command(N)  { bEmptyArgsHandled = true; };
@@ -3359,6 +3361,8 @@ void register_mp_console_commands()
 		CMD1(CCC_AdminWallHack, "af_adm_wallhack");
 		CMD4(CCC_Float, "r__lamp_bright", &lamp_bright, 0.5f, 10.0f);
 		CMD4(CCC_Integer, "r__off_shadowing", &off_global_shadowing, 0, 1);
+
+		CMD4(CCC_Integer, "g_enable_hud_compas", &g_enable_hud_compas, 0, 1);
 	}
 
 

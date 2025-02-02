@@ -228,7 +228,7 @@ void xrServer::OnBuildVersionRespond				( IClient* CL, NET_Packet& P )
 		if (_our != _him)
 		{
 			SendConnectResult(CL, 0, ecr_data_verification_failed, game_version);
-			Msg("!!ERROR Попытка входа с другой версии! Севрер: %d | Клиент: %d", _our, _him);
+			Msg("!!ERROR Попытка входа с другой версии! Сервер: %d | Клиент: %d", _our, _him);
 			return;
 		}
 

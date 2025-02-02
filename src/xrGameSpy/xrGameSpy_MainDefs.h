@@ -5,21 +5,12 @@
 
 #undef DEMO_BUILD
 
-//#define DEMO_BUILD
 
-#ifdef DEMO_BUILD
-	#define	GAMESPY_GAMENAME				"stalkercoppc"
-	#define GAMESPY_GAMEID					2760
-	#define GAMESPY_PRODUCTID				11994
-	#define GAME_VERSION					"1.6.02"
-	#define REGISTRY_PATH					"Software\\GSC Game World\\STALKER-COP_DBG\\"
-#else
-	#define	GAMESPY_GAMENAME				"stalkercoppc"
-	#define GAMESPY_GAMEID					2760
-	#define GAMESPY_PRODUCTID				11994
-	#define GAME_VERSION					"NearestStage x64: DEV-Test                                                                                                               Client version 3.0"
-	#define REGISTRY_PATH					"Software\\GSC Game World\\STALKER-COP\\"
-#endif
+#define	GAMESPY_GAMENAME				"stalkercoppc"
+#define GAMESPY_GAMEID					2760
+#define GAMESPY_PRODUCTID				11994
+#define GAME_VERSION					"NearestEngine x64"
+#define REGISTRY_PATH					"Software\\GSC Game World\\STALKER-COP\\"
 
 #define GAMESPY_GP_NAMESPACE_ID				1 /*gamespy global namespace*/
 

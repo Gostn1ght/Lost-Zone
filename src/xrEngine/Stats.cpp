@@ -560,7 +560,7 @@ void CStats::OnRender				()
 		pSFont->SizeOf_(1.5f);
 		F.SetColor(hex_color(208, 208, 208));
 		F.OutSet(5, 5);
-		F.OutNext("NearestStage DEV-TEST  Client Version 3.3");
+		F.OutNext("NearestEngine x64");
 		pSFont->OnRender();
 	}
 #endif // !DEDICATED_SERVER
